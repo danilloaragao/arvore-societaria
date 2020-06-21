@@ -13,6 +13,10 @@ const MeusSocios = () => {
         navigation.goBack()
     }
 
+    function handleCadastrar() {
+        navigation.navigate('CadastroSocio')
+    }
+
     return (
         <View style={Styles.container}>
             <Text style={Styles.title}> Meus Sócios</Text>
@@ -45,7 +49,7 @@ const MeusSocios = () => {
                     </Text>
                 </RectButton>
 
-                <RectButton style={Styles.button} onPress={handleVoltar}>
+                <RectButton style={Styles.button} onPress={handleCadastrar}>
                     <View style={Styles.buttonIcon}>
                         <Icon name='plus-circle' color='#fff' size={24} />
                     </View>

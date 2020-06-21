@@ -7,31 +7,31 @@ import Styles from './styles'
 
 const Pesquisa = () => {
     const navigation = useNavigation()
-
-    function handleMinhaEmpresa(){
-        navigation.navigate('MinhaEmpresa')
-    }
+    const [name, setName] = useState('');
 
     function handlePesquisa(){
-        navigation.navigate('MinhaPesquisa')
+        navigation.navigate('ResultadoPesquisa')
     }
 
     return (
-        // <SafeAreaView style={{ flex: 1 }}>
             <View style={Styles.container}>
                 <Text style={Styles.title}>Pesquisa</Text>
-                <RectButton style={Styles.button} onPress={handleMinhaEmpresa}>
-                    <Text style={Styles.buttonText}>
-                        Minha Empresa
-                    </Text>
-                </RectButton>
-                <RectButton style={Styles.button} onPress={handlePesquisa}>
-                    <Text style={Styles.buttonText}>
-                        Pesquisar
-                    </Text>
-                </RectButton>
+
+                <Text style={Styles.description}>Nome da empresa:</Text>     
+                <View style={Styles.lineWrapper}>                
+                <TextInput
+                        style={Styles.input}
+                        value={name}
+                        onChangeText={setName}
+                        autoCorrect={false} />
+
+                        <RectButton style={Styles.searchButton} onPress={handlePesquisa}>
+                        <View style={Styles.buttonIcon}>
+                            <Icon name='search' color='#fff' size={24} />
+                        </View>
+                    </RectButton>
+                    </View>
             </View>
-        // </SafeAreaView>
     )
 }
 

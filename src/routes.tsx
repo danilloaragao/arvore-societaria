@@ -11,6 +11,8 @@ import Perfil from './pages/perfil';
 import MinhaEmpresa from './pages/minhaEmpresa';
 import CadastroEmpresa from './pages/cadastroEmpresa';
 import MeusSocios from './pages/meusSocios';
+import CadastroSocio from './pages/cadastroSocio';
+import ResultadoPesquisa from './pages/resultadoPesquisa';
 
 const AppStack = createStackNavigator()
 
@@ -32,6 +34,8 @@ const Routes = () => {
                 <AppStack.Screen name='MinhaEmpresa' component={MinhaEmpresa} />
                 <AppStack.Screen name='CadastroEmpresa' component={CadastroEmpresa} />
                 <AppStack.Screen name='MeusSocios' component={MeusSocios} />
+                <AppStack.Screen name='CadastroSocio' component={CadastroSocio} />
+                <AppStack.Screen name='ResultadoPesquisa' component={ResultadoPesquisa} />
             </AppStack.Navigator>
         </NavigationContainer>
     )

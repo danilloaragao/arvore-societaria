@@ -5,7 +5,7 @@ import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 
-const Socio = () => {
+const SocioPesquisa = () => {
     function handleExclusao(){
         Alert.alert("","Confirma a remoção da Empresa A da lista de Sócios?",[{
             text: "Sim",
@@ -18,15 +18,11 @@ const Socio = () => {
 
     return (
         <View style={Styles.container}>
-            <View style={Styles.buttonIcon}>
-                <Icon name='x-circle' color='#ff0000' size={24} onPress={handleExclusao}/>
-            </View>
-            <Text style={Styles.description}>Nome: Empresa A</Text>
+              <Text style={Styles.description}>Nome: Empresa B</Text>
             <Text style={Styles.description}>CNPJ: 12.051.771/0001-97</Text>
-
         </View>
     )
 }
 
-export default Socio
+export default SocioPesquisa
 
