@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { View, ImageBackground, Image, StyleSheet, Text, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
+import React, { useState } from 'react'
+import { View, ImageBackground, Text, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -65,7 +65,6 @@ const Login = () => {
                 </View>
             </View>
         </KeyboardAvoidingView>)
-
 }
 
 export default Login

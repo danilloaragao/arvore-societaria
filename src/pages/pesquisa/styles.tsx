@@ -1,8 +1,5 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import { Constants } from 'expo'
-
-
 
 const Styles = StyleSheet.create({
     container: {
@@ -29,16 +26,6 @@ const Styles = StyleSheet.create({
         paddingBottom: 24
     },
 
-    button: {
-        backgroundColor: '#bfb2a8',
-        height: 60,
-        flexDirection: 'row',
-        borderRadius: 10,
-        overflow: 'hidden',
-        alignItems: 'center',
-        marginTop: 8,
-    },
-
     searchButton: {
         backgroundColor: '#bfb2a8',
         height: 60,
@@ -61,15 +48,6 @@ const Styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         justifyContent: 'center',
         alignItems: 'center'
-    },
-
-    buttonText: {
-        flex: 1,
-        justifyContent: 'center',
-        textAlign: 'center',
-        color: '#000',
-        fontFamily: 'Roboto_500Medium',
-        fontSize: 16,
     },
 
     lineWrapper:{

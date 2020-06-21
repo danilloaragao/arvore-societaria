@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { View, ImageBackground, Image, StyleSheet, Text, TextInput, KeyboardAvoidingView, Platform, SafeAreaView, Alert } from 'react-native'
+import React from 'react'
+import { View, Text } from 'react-native'
 import { RectButton, ScrollView } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import Socio from '../../components/socios'
+import BackHomeBtn from '../../components/backHome'
 
 const MeusSocios = () => {
     const navigation = useNavigation()
@@ -19,7 +20,10 @@ const MeusSocios = () => {
 
     return (
         <View style={Styles.container}>
-            <Text style={Styles.title}> Meus Sócios</Text>
+            <View>
+                <BackHomeBtn />
+                <Text style={Styles.title}> Meus Sócios</Text>
+            </View>
             <ScrollView>
                 <Socio></Socio>
                 <Socio></Socio>

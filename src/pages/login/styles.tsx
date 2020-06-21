@@ -25,18 +25,7 @@ const Styles = StyleSheet.create({
         textAlign: "center",
     },
 
-    description: {
-        color: '#6C6C80',
-        fontSize: 16,
-        marginTop: 16,
-        fontFamily: 'Roboto_400Regular',
-        maxWidth: 260,
-        lineHeight: 24,
-    },
-
     footer: {},
-
-    select: {},
 
     input: {
         height: 60,

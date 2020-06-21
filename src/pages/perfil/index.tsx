@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { View, ImageBackground, Image, StyleSheet, Text, TextInput, KeyboardAvoidingView, Platform, SafeAreaView, Alert } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, TextInput } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
+import BackHomeBtn from '../../components/backHome'
 
 const Perfil = () => {
     const navigation = useNavigation()
@@ -22,9 +23,11 @@ const Perfil = () => {
     }
 
     return (
-        // <SafeAreaView style={{ flex: 1 }}>
         <View style={Styles.container}>
-            <Text style={Styles.title}>Meu Perfil</Text>
+            <View>
+                <BackHomeBtn />
+                <Text style={Styles.title}>Meu Perfil</Text>
+            </View>
             <Text>E-mail</Text>
             <TextInput
                 style={Styles.input}
@@ -74,7 +77,6 @@ const Perfil = () => {
                     </Text>
             </RectButton>
         </View>
-        // </SafeAreaView>
     )
 }
 

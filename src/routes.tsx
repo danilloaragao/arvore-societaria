@@ -20,11 +20,11 @@ const Routes = () => {
     return (
         <NavigationContainer>
             <AppStack.Navigator headerMode='none'
-                                screenOptions = {{
-                                    cardStyle: {
-                                        backgroundColor: '#f0f0f5'
-                                    }
-                                }} >
+                screenOptions={{
+                    cardStyle: {
+                        backgroundColor: '#f0f0f5'
+                    }
+                }} >
                 <AppStack.Screen name='Login' component={Login} />
                 <AppStack.Screen name='CadastroUsuario' component={CadastroUsuario} />
                 <AppStack.Screen name='EsqueciSenha' component={EsqueciSenha} />

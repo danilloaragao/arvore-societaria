@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { View, ImageBackground, Image, StyleSheet, Text, TextInput, KeyboardAvoidingView, Platform, SafeAreaView, Alert, Picker } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, Alert, Picker } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
+import BackHomeBtn from '../../components/backHome'
 
 const CadastroSocio = () => {
     const navigation = useNavigation()
@@ -14,14 +15,15 @@ const CadastroSocio = () => {
     }
 
     function handleCadastrar() {
-        Alert.alert("","Sócio Cadastrado com Sucesso!")
+        Alert.alert("", "Sócio Cadastrado com Sucesso!")
     }
 
     return (
-        // <SafeAreaView style={{ flex: 1 }}>
         <View style={Styles.container}>
-
-            <Text style={Styles.title}>CadastroSocio</Text>
+            <View>
+                <BackHomeBtn />
+                <Text style={Styles.title}>CadastroSocio</Text>
+            </View>
             <Text style={Styles.description}>Selecione o nome da empresa:</Text>
             <View style={Styles.comboView}>
                 <Picker
@@ -39,28 +41,27 @@ const CadastroSocio = () => {
             </View>
 
             <View style={Styles.footer}>
-            <View style={Styles.buttonWrapper}>
-                <RectButton style={Styles.button} onPress={handleVoltar}>
-                    <View style={Styles.buttonIcon}>
-                        <Icon name='arrow-left' color='#fff' size={24} />
-                    </View>
-                    <Text style={Styles.buttonText}>
-                        Voltar
+                <View style={Styles.buttonWrapper}>
+                    <RectButton style={Styles.button} onPress={handleVoltar}>
+                        <View style={Styles.buttonIcon}>
+                            <Icon name='arrow-left' color='#fff' size={24} />
+                        </View>
+                        <Text style={Styles.buttonText}>
+                            Voltar
                     </Text>
-                </RectButton>
+                    </RectButton>
 
-                <RectButton style={Styles.button} onPress={handleCadastrar}>
-                    <View style={Styles.buttonIcon}>
-                        <Icon name='plus-circle' color='#fff' size={24} />
-                    </View>
-                    <Text style={Styles.buttonText}>
-                        Cadastrar
+                    <RectButton style={Styles.button} onPress={handleCadastrar}>
+                        <View style={Styles.buttonIcon}>
+                            <Icon name='plus-circle' color='#fff' size={24} />
+                        </View>
+                        <Text style={Styles.buttonText}>
+                            Cadastrar
                     </Text>
-                </RectButton>
-            </View>
+                    </RectButton>
+                </View>
             </View>
         </View>
-        // </SafeAreaView>
     )
 }
 

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { View, ImageBackground, Image, StyleSheet, Text, TextInput, KeyboardAvoidingView, Platform, SafeAreaView, Alert } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, TextInput, Alert } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
-import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
+import BackHomeBtn from '../../components/backHome'
 
 const CadastroEmpresa = () => {
     const [name, setName] = useState('')
@@ -11,43 +11,37 @@ const CadastroEmpresa = () => {
     const [password, setPassword] = useState('')
     const navigation = useNavigation()
 
-    // function handleNavigationToPoints() {
-    //     navigation.navigate('Points',{
-    //         uf,
-    //         city 
-    //     })
-    // }
-
-    function handleCadastrar(){
-        Alert.alert("","Cadastro Efetuado com sucesso!")
+    function handleCadastrar() {
+        Alert.alert("", "Cadastro Efetuado com sucesso!")
         navigation.navigate('MinhaEmpresa')
     }
 
     return (
-        // <SafeAreaView style={{ flex: 1 }}>
-            <View style={Styles.container}>
+        <View style={Styles.container}>
+            <View>
+                <BackHomeBtn />
                 <Text style={Styles.title}>Dados da Empresa</Text>
-                <Text>Nome</Text>
-                <TextInput
-                    style={Styles.input}
-                    value={name}
-                    onChangeText={setName}
-                    autoCorrect={false} />
-
-                <Text>CNPJ</Text>
-                <TextInput
-                    style={Styles.input}
-                    value={cnpj}
-                    onChangeText={setCnpj}
-                    autoCorrect={false} />
-
-                <RectButton style={Styles.button} onPress={handleCadastrar}>
-                    <Text style={Styles.buttonText}>
-                        Cadastrar
-                    </Text>
-                </RectButton>
             </View>
-        // </SafeAreaView>
+            <Text>Nome</Text>
+            <TextInput
+                style={Styles.input}
+                value={name}
+                onChangeText={setName}
+                autoCorrect={false} />
+
+            <Text>CNPJ</Text>
+            <TextInput
+                style={Styles.input}
+                value={cnpj}
+                onChangeText={setCnpj}
+                autoCorrect={false} />
+
+            <RectButton style={Styles.button} onPress={handleCadastrar}>
+                <Text style={Styles.buttonText}>
+                    Cadastrar
+                    </Text>
+            </RectButton>
+        </View>
     )
 }
 

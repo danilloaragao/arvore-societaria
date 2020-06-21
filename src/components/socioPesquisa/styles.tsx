@@ -12,25 +12,16 @@ const Styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#20232a",
         borderRadius: 16,
-        maxHeight:50,
-        marginBottom:10, 
-        
+        maxHeight: 50,
+        marginBottom: 10,
+
     },
 
     description: {
         color: '#6C6C80',
         fontSize: 16,
         fontFamily: 'Roboto_400Regular',
-    },
-    
-    buttonIcon: {
-        height: 30,
-        width: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        alignSelf: 'flex-end'
-    },
+    }
 })
 
 export default Styles

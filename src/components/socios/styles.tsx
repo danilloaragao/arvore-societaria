@@ -12,9 +12,8 @@ const Styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#20232a",
         borderRadius: 16,
-        maxHeight:50,
-        marginBottom:10, 
-        
+        maxHeight: 50,
+        marginBottom: 10,
     },
 
     description: {
@@ -22,7 +21,7 @@ const Styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: 'Roboto_400Regular',
     },
-    
+
     buttonIcon: {
         height: 30,
         width: 30,

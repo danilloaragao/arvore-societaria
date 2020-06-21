@@ -1,23 +1,11 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import { Constants } from 'expo'
-
-
 
 const Styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 32,
         paddingTop: 60,
-    },
-
-    input: {
-        height: 60,
-        backgroundColor: '#FFF',
-        borderRadius: 10,
-        marginBottom: 8,
-        paddingHorizontal: 24,
-        fontSize: 16,
     },
 
     title: {
@@ -40,47 +28,6 @@ const Styles = StyleSheet.create({
         width: '49%',
     },
 
-    description: {
-        color: '#6C6C80',
-        fontSize: 16,
-        marginTop: 4,
-        fontFamily: 'Roboto_400Regular',
-    },
-
-    itemsContainer: {
-        flexDirection: 'row',
-        marginTop: 16,
-        marginBottom: 32,
-    },
-
-    item: {
-        backgroundColor: '#fff',
-        borderWidth: 2,
-        borderColor: '#eee',
-        height: 120,
-        width: 120,
-        borderRadius: 8,
-        paddingHorizontal: 16,
-        paddingTop: 20,
-        paddingBottom: 16,
-        marginRight: 8,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-
-        textAlign: 'center',
-    },
-
-    selectedItem: {
-        borderColor: '#34CB79',
-        borderWidth: 2,
-    },
-
-    itemTitle: {
-        fontFamily: 'Roboto_400Regular',
-        textAlign: 'center',
-        fontSize: 13,
-    },
-
     buttonText: {
         flex: 1,
         justifyContent: 'center',
@@ -96,15 +43,6 @@ const Styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         justifyContent: 'center',
         alignItems: 'center'
-    },
-
-    addIcon: {
-        height: 30,
-        width: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        alignSelf: 'flex-end'
     },
 
     buttonWrapper:{

@@ -1,8 +1,5 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import { Constants } from 'expo'
-
-
 
 const Styles = StyleSheet.create({
     container: {
@@ -11,12 +8,12 @@ const Styles = StyleSheet.create({
         paddingTop: 60,
     },
 
-    combo:{
+    combo: {
         height: 60,
-        width:'100%',
+        width: '100%',
     },
 
-    comboView:{
+    comboView: {
         borderStyle: 'solid',
         borderColor: "#20232a",
         borderRadius: 16,
@@ -24,18 +21,9 @@ const Styles = StyleSheet.create({
         backgroundColor: '#bfb2a8',
     },
 
-    input: {
-        height: 60,
-        backgroundColor: '#FFF',
-        borderRadius: 10,
-        marginBottom: 8,
-        paddingHorizontal: 24,
-        fontSize: 16,
-    },
-
     footer: {
-        flex:1,
-        position:'absolute',
+        flex: 1,
+        position: 'absolute',
         alignSelf: 'center',
         bottom: 5
     },
@@ -67,43 +55,9 @@ const Styles = StyleSheet.create({
         fontFamily: 'Roboto_400Regular',
     },
 
-    buttonWrapper:{
+    buttonWrapper: {
         flexDirection: 'row',
         justifyContent: 'space-around'
-    },
-
-    itemsContainer: {
-        flexDirection: 'row',
-        marginTop: 16,
-        marginBottom: 32,
-    },
-
-    item: {
-        backgroundColor: '#fff',
-        borderWidth: 2,
-        borderColor: '#eee',
-        height: 120,
-        width: 120,
-        borderRadius: 8,
-        paddingHorizontal: 16,
-        paddingTop: 20,
-        paddingBottom: 16,
-        marginRight: 8,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-
-        textAlign: 'center',
-    },
-
-    selectedItem: {
-        borderColor: '#34CB79',
-        borderWidth: 2,
-    },
-
-    itemTitle: {
-        fontFamily: 'Roboto_400Regular',
-        textAlign: 'center',
-        fontSize: 13,
     },
 
     buttonText: {
@@ -114,14 +68,14 @@ const Styles = StyleSheet.create({
         fontFamily: 'Roboto_500Medium',
         fontSize: 16,
     },
-    
+
     buttonIcon: {
         height: 60,
         width: 60,
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         justifyContent: 'center',
         alignItems: 'center'
-    },
+    }
 })
 
 export default Styles
