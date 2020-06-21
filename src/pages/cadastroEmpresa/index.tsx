@@ -19,7 +19,7 @@ const CadastroEmpresa = () => {
     // }
 
     function handleCadastrar(){
-        alert("Cadastro Efetuado com sucesso!")
+        Alert.alert("","Cadastro Efetuado com sucesso!")
         navigation.navigate('MinhaEmpresa')
     }
 

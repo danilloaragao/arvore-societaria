@@ -21,7 +21,7 @@ const Styles = StyleSheet.create({
         fontFamily: 'Ubuntu_700Bold',
         maxWidth: 260,
         marginTop: 40,
-        marginLeft: 10,
+        marginLeft: 90,
         textAlign: "center",
     },
 

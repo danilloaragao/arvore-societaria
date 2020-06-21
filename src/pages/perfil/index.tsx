@@ -8,52 +8,72 @@ import Styles from './styles'
 const Perfil = () => {
     const navigation = useNavigation()
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [previousPassword, setpreviousPassword] = useState('')
+    const [newPassword, setNewPassword] = useState('')
+    const [confirmNewPassword, setConfirmNewPassword] = useState('')
 
-    function handleAtualizar(){
+    function handleAtualizar() {
         alert('Dados atualizados com sucesso!')
         navigation.goBack()
     }
 
-    function handleCancelar(){
+    function handleCancelar() {
         navigation.goBack()
     }
 
     return (
         // <SafeAreaView style={{ flex: 1 }}>
-            <View style={Styles.container}>
-                <Text style={Styles.title}>Meu Perfil</Text>
-                <Text>E-mail</Text>
-                <TextInput
-                    style={Styles.input}
-                    value={email}
-                    onChangeText={setEmail}
-                    autoCorrect={false} />
+        <View style={Styles.container}>
+            <Text style={Styles.title}>Meu Perfil</Text>
+            <Text>E-mail</Text>
+            <TextInput
+                style={Styles.input}
+                value={email}
+                onChangeText={setEmail}
+                autoCorrect={false} />
 
-                <Text>Senha</Text>
-                <TextInput
-                    style={Styles.input}
-                    value={password}
-                    onChangeText={setPassword}
-                    autoCorrect={false}
-                    secureTextEntry={true} />
-                <RectButton style={Styles.button} onPress={handleAtualizar}>
+            <Text>Senha Antiga</Text>
+            <TextInput
+                style={Styles.input}
+                value={previousPassword}
+                onChangeText={setpreviousPassword}
+                autoCorrect={false}
+                secureTextEntry={true} />
+
+            <Text>Senha Nova</Text>
+            <TextInput
+                style={Styles.input}
+                value={newPassword}
+                onChangeText={setNewPassword}
+                autoCorrect={false}
+                secureTextEntry={true} />
+
+            <Text>Confirme a Senha Nova</Text>
+            <TextInput
+                style={Styles.input}
+                value={confirmNewPassword}
+                onChangeText={setConfirmNewPassword}
+                autoCorrect={false}
+                secureTextEntry={true} />
+
+
+            <RectButton style={Styles.button} onPress={handleAtualizar}>
                 <View style={Styles.buttonIcon}>
-                            <Icon name='edit' color='#fff' size={24} />
-                        </View>
-                    <Text style={Styles.buttonText}>
-                        Atualizar Dados
+                    <Icon name='edit' color='#fff' size={24} />
+                </View>
+                <Text style={Styles.buttonText}>
+                    Atualizar Dados
                     </Text>
-                </RectButton>
-                <RectButton style={Styles.button} onPress={handleCancelar}>
+            </RectButton>
+            <RectButton style={Styles.button} onPress={handleCancelar}>
                 <View style={Styles.buttonIcon}>
-                            <Icon name='x-circle' color='#fff' size={24} />
-                        </View>
-                    <Text style={Styles.buttonText}>
-                        Cancelar
+                    <Icon name='x-circle' color='#fff' size={24} />
+                </View>
+                <Text style={Styles.buttonText}>
+                    Cancelar
                     </Text>
-                </RectButton>
-            </View>
+            </RectButton>
+        </View>
         // </SafeAreaView>
     )
 }

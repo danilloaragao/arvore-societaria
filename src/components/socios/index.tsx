@@ -8,13 +8,14 @@ import Styles from './styles'
 const Socio = () => {
 
     return (
-            <View style={Styles.container}>
-                <Text style={Styles.description}>Nome: Empresa A</Text>
-                <Text style={Styles.description}>CNPJ: 12.051.771/0001-97</Text>
-                    <View style={Styles.buttonIcon}>
-                        <Icon name='x-circle' color='#fff' size={24} />
-                    </View>
+        <View style={Styles.container}>
+            <View style={Styles.buttonIcon}>
+                <Icon name='x-circle' color='#ff0000' size={24} />
             </View>
+            <Text style={Styles.description}>Nome: Empresa A</Text>
+            <Text style={Styles.description}>CNPJ: 12.051.771/0001-97</Text>
+
+        </View>
     )
 }
 

@@ -35,7 +35,9 @@ const Styles = StyleSheet.create({
         borderRadius: 10,
         overflow: 'hidden',
         alignItems: 'center',
-        marginTop: 8,
+        marginTop: 16,
+        marginBottom: 12,
+        width: '49%',
     },
 
     description: {
@@ -43,48 +45,6 @@ const Styles = StyleSheet.create({
         fontSize: 16,
         marginTop: 4,
         fontFamily: 'Roboto_400Regular',
-    },
-
-    mapContainer: {
-        flex: 1,
-        width: '100%',
-        borderRadius: 10,
-        overflow: 'hidden',
-        marginTop: 16,
-    },
-
-    map: {
-        width: '100%',
-        height: '100%',
-    },
-
-    mapMarker: {
-        width: 90,
-        height: 80,
-    },
-
-    mapMarkerContainer: {
-        width: 90,
-        height: 70,
-        backgroundColor: '#34CB79',
-        flexDirection: 'column',
-        borderRadius: 8,
-        overflow: 'hidden',
-        alignItems: 'center'
-    },
-
-    mapMarkerImage: {
-        width: 90,
-        height: 45,
-        resizeMode: 'cover',
-    },
-
-    mapMarkerTitle: {
-        flex: 1,
-        fontFamily: 'Roboto_400Regular',
-        color: '#FFF',
-        fontSize: 13,
-        lineHeight: 23,
     },
 
     itemsContainer: {
@@ -132,11 +92,25 @@ const Styles = StyleSheet.create({
     
     buttonIcon: {
         height: 60,
-        width: 60,
+        width: 35,
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         justifyContent: 'center',
         alignItems: 'center'
     },
+
+    addIcon: {
+        height: 30,
+        width: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        alignSelf: 'flex-end'
+    },
+
+    buttonWrapper:{
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    }
 })
 
 export default Styles

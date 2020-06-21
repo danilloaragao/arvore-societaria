@@ -18,7 +18,7 @@ const EsqueciSenha = () => {
     // }
 
     function handleRecuperarSenha(){
-        alert("Uma nova senha foi enviada para o e-mail cadastrado.")
+        Alert.alert("","Uma nova senha foi enviada para o e-mail cadastrado.")
         navigation.navigate('Login')
     }
 
