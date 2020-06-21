@@ -4,10 +4,10 @@ import { RectButton, ScrollView } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
-import Socio from '../../components/socios'
+import Investidos from '../../components/investidores'
 import BackHomeBtn from '../../components/backHome'
 
-const MeusSocios = () => {
+const MeusInvestidos = () => {
     const navigation = useNavigation()
 
     function handleVoltar() {
@@ -15,33 +15,36 @@ const MeusSocios = () => {
     }
 
     function handleCadastrar() {
-        navigation.navigate('CadastroSocio')
+        navigation.navigate('CadastroInvestido')
     }
 
     return (
         <View style={Styles.container}>
             <View>
                 <BackHomeBtn />
-                <Text style={Styles.title}> Meus Sócios</Text>
+                <Text style={Styles.title}> Meus Investidos</Text>
             </View>
             <ScrollView>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
-                <Socio></Socio>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
+                <Investidos/>
             </ScrollView>
             <View style={Styles.buttonWrapper}>
                 <RectButton style={Styles.button} onPress={handleVoltar}>
@@ -66,5 +69,5 @@ const MeusSocios = () => {
     )
 }
 
-export default MeusSocios
+export default MeusInvestidos
 

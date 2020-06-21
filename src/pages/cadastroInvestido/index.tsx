@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
 
-const CadastroSocio = () => {
+const CadastroInvestido = () => {
     const navigation = useNavigation()
     const [name, setName] = useState('')
 
@@ -15,14 +15,14 @@ const CadastroSocio = () => {
     }
 
     function handleCadastrar() {
-        Alert.alert("", "Sócio Cadastrado com Sucesso!")
+        Alert.alert("", "Investido Cadastrado com Sucesso!")
     }
 
     return (
         <View style={Styles.container}>
             <View>
                 <BackHomeBtn />
-                <Text style={Styles.title}>CadastroSocio</Text>
+                <Text style={Styles.title}>Cadastro Investido</Text>
             </View>
             <Text style={Styles.description}>Selecione o nome da empresa:</Text>
             <View style={Styles.comboView}>
@@ -65,5 +65,4 @@ const CadastroSocio = () => {
     )
 }
 
-export default CadastroSocio
-
+export default CadastroInvestido

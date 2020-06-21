@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Alert } from 'react-native'
 import Styles from './styles'
 
-const SocioPesquisa = () => {
+const InvestidosPesquisa = () => {
     return (
         <View style={Styles.container}>
             <Text style={Styles.description}>Nome: Empresa B</Text>
@@ -11,5 +11,5 @@ const SocioPesquisa = () => {
     )
 }
 
-export default SocioPesquisa
+export default InvestidosPesquisa
 

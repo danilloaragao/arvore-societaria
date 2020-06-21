@@ -5,21 +5,34 @@ import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
 
-const CadastroEmpresa = () => {
+const PerfilEmpresa = () => {
     const [name, setName] = useState('')
     const [cnpj, setCnpj] = useState('')
     const navigation = useNavigation()
 
     function handleCadastrar() {
-        Alert.alert("", "Cadastro Efetuado com sucesso!")
+        Alert.alert("", "Atualização efetuada com sucesso!")
         navigation.navigate('MinhaEmpresa')
+    }
+
+    function handleExclusao() {
+        Alert.alert("", "Confirma a exclusão da Empresa?", [{
+            text: "Sim",
+            onPress: () => {
+                Alert.alert("", "Empresa A excluída com sucesso")
+                navigation.navigate('Home')
+            }
+        }, {
+            text: "Não"
+        },
+        ])
     }
 
     return (
         <View style={Styles.container}>
             <View>
                 <BackHomeBtn />
-                <Text style={Styles.title}>Nova Empresa</Text>
+                <Text style={Styles.title}>Dados da Empresa</Text>
             </View>
             <Text>Nome</Text>
             <TextInput
@@ -35,14 +48,20 @@ const CadastroEmpresa = () => {
                 onChangeText={setCnpj}
                 autoCorrect={false} />
 
-            <RectButton style={Styles.button} onPress={handleCadastrar}>
+<RectButton style={Styles.button} onPress={handleCadastrar}>
                 <Text style={Styles.buttonText}>
-                    Cadastrar
+                    Atualizar
+                    </Text>
+            </RectButton>
+
+            <RectButton style={Styles.button} onPress={handleExclusao}>
+                <Text style={Styles.buttonText}>
+                    Excluir
                     </Text>
             </RectButton>
         </View>
     )
 }
 
-export default CadastroEmpresa
+export default PerfilEmpresa
 

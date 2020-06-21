@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Styles from './styles'
-import SocioPesquisa from '../../components/socioPesquisa'
+import InvestidosPesquisa from '../../components/investidosPesquisa'
 import BackHomeBtn from '../../components/backHome'
 
 const ResultadoPesquisa = () => {
@@ -12,31 +12,41 @@ const ResultadoPesquisa = () => {
                 <BackHomeBtn />
                 <Text style={Styles.title}>Resultado da Pesquisa</Text>
             </View>
-            <Text style={Styles.title}>Quadro Societário</Text>
+            <Text style={Styles.title}>Quadro de Investidores</Text>
             <View style={Styles.container}>
                 <View style={Styles.sociosDe}>
-                    <Text style={Styles.description}>Sócios da Empresa A</Text>
+                    <Text style={Styles.description}>Investidores da Empresa A</Text>
                     <ScrollView>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
                     </ScrollView>
                 </View>
                 <View style={Styles.empresaPesquisada}>
-                    <SocioPesquisa></SocioPesquisa>
+                <InvestidosPesquisa/>
                 </View>
                 <View style={Styles.sociosDe}>
-                    <Text style={Styles.description}>Empresa A é sócia de</Text>
+                    <Text style={Styles.description}>Investidoss da Empresa A</Text>
                     <ScrollView>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
-                        <SocioPesquisa></SocioPesquisa>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
+                    <InvestidosPesquisa/>
                     </ScrollView>
                 </View>
             </View>

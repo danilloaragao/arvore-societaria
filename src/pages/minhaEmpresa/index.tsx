@@ -10,11 +10,11 @@ const MinhaEmpresa = () => {
     const navigation = useNavigation()
 
     function handlePerfil() {
-        navigation.navigate('CadastroEmpresa')
+        navigation.navigate('PerfilEmpresa')
     }
 
-    function handleMeusSocios() {
-        navigation.navigate('MeusSocios')
+    function handleMeusInvestidos() {
+        navigation.navigate('MeusInvestidos')
     }
 
     return (
@@ -32,12 +32,12 @@ const MinhaEmpresa = () => {
                     </Text>
             </RectButton>
 
-            <RectButton style={Styles.button} onPress={handleMeusSocios}>
+            <RectButton style={Styles.button} onPress={handleMeusInvestidos}>
                 <View style={Styles.buttonIcon}>
                     <Icon name='trending-up' color='#fff' size={24} />
                 </View>
                 <Text style={Styles.buttonText}>
-                    Meus Sócios
+                    Meus Investidos
                     </Text>
             </RectButton>
         </View>

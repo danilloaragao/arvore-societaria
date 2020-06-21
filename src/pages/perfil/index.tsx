@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Alert } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -14,7 +14,7 @@ const Perfil = () => {
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
 
     function handleAtualizar() {
-        alert('Dados atualizados com sucesso!')
+        Alert.alert('','Dados atualizados com sucesso!')
         navigation.goBack()
     }
 

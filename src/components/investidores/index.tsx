@@ -3,11 +3,11 @@ import { View, Text, Alert } from 'react-native'
 import { Feather as Icon } from '@expo/vector-icons'
 import Styles from './styles'
 
-const Socio = () => {
+const Investidos = () => {
     function handleExclusao() {
-        Alert.alert("", "Confirma a remoção da Empresa A da lista de Sócios?", [{
+        Alert.alert("", "Confirma a remoção da Empresa A da lista de Investidos?", [{
             text: "Sim",
-            onPress: () => Alert.alert("", "Empresa A removida da lista de Sócios")
+            onPress: () => Alert.alert("", "Empresa A removida da lista de Investidos")
         }, {
             text: "Não"
         },
@@ -25,5 +25,5 @@ const Socio = () => {
     )
 }
 
-export default Socio
+export default Investidos
 

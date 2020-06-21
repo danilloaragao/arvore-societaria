@@ -1,17 +1,19 @@
 {
-  "name": "ArvoreSocietaria",
-  "displayName": "ArvoreSocietaria",
-  "expo": {
-    "name": "ArvoreSocietaria",
+   "expo": {
+    "name": "Arvore Societaria",
     "slug": "expo-template-bare",
-    "version": "1.0.0",
+    "icon": "./icon.png",
+    "android": {
+      "package": "com.fatecsp.adsnoite",
+      "versionCode": 1
+    },
     "platforms": [
       "ios",
       "android",
       "web"
     ],
     "assetBundlePatterns": [
-      "**/*"
+      "src/assets/*.*"
     ]
   }
 }
