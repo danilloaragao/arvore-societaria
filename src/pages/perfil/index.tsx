@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, Alert } from 'react-native'
-import { RectButton } from 'react-native-gesture-handler'
+import { RectButton, ScrollView } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
@@ -14,7 +14,7 @@ const Perfil = () => {
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
 
     function handleAtualizar() {
-        Alert.alert('','Dados atualizados com sucesso!')
+        Alert.alert('', 'Dados atualizados com sucesso!')
         navigation.goBack()
     }
 
@@ -22,8 +22,22 @@ const Perfil = () => {
         navigation.goBack()
     }
 
+    function handleExclusao() {
+        Alert.alert("", "Confirma a exclusão da conta?", [{
+            text: "Sim",
+            onPress: () => {
+                Alert.alert("", "Conta excluída com sucesso")
+                navigation.navigate('Login')
+            }
+        }, {
+            text: "Não"
+        },
+        ])
+    }
+
     return (
         <View style={Styles.container}>
+            <ScrollView>
             <View>
                 <BackHomeBtn />
                 <Text style={Styles.title}>Meu Perfil</Text>
@@ -68,6 +82,16 @@ const Perfil = () => {
                     Atualizar Dados
                     </Text>
             </RectButton>
+
+            <RectButton style={Styles.button} onPress={handleExclusao}>
+                <View style={Styles.buttonIcon}>
+                    <Icon name='edit' color='#fff' size={24} />
+                </View>
+                <Text style={Styles.buttonText}>
+                    Deletar Conta
+                    </Text>
+            </RectButton>
+
             <RectButton style={Styles.button} onPress={handleCancelar}>
                 <View style={Styles.buttonIcon}>
                     <Icon name='x-circle' color='#fff' size={24} />
@@ -76,6 +100,8 @@ const Perfil = () => {
                     Cancelar
                     </Text>
             </RectButton>
+
+            </ScrollView>
         </View>
     )
 }

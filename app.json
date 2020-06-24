@@ -1,19 +1,24 @@
 {
-   "expo": {
-    "name": "Arvore Societaria",
-    "slug": "expo-template-bare",
-    "icon": "./icon.png",
-    "android": {
-      "package": "com.fatecsp.adsnoite",
-      "versionCode": 1
-    },
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "src/assets/*.*"
-    ]
-  }
+  "expo": {
+   "name": "Arvore Societaria",
+   "slug": "expo-template-bare",
+   "icon": "./icon.png",
+   "privacy": "public",
+   "sdkVersion": "36.0.0",
+   "android": {
+     "package": "com.fatecsp.adsnoite",
+     "versionCode": 1
+   },
+   "ios": {
+    "bundleIdentifier": "com.fatecsp.adsnoite"
+  },
+   "platforms": [
+     "ios",
+     "android",
+     "web"
+   ],
+   "assetBundlePatterns": [
+     "src/assets/*.*"
+   ]
+ }
 }
