@@ -5,24 +5,27 @@ import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
+import NumericInput from 'react-native-numeric-input'
 
-const CadastroInvestido = () => {
+const NovoInvestimento = () => {
     const navigation = useNavigation()
     const [name, setName] = useState('')
+    const [cotas, setCotas] = useState(0)
 
     function handleVoltar() {
         navigation.goBack()
     }
 
     function handleCadastrar() {
-        Alert.alert("", "Investido Cadastrado com Sucesso!")
+        Alert.alert("", "Investimento realizado com sucesso!")
+        navigation.goBack()
     }
 
     return (
         <View style={Styles.container}>
             <View>
                 <BackHomeBtn />
-                <Text style={Styles.title}>Cadastro Investido</Text>
+                <Text style={Styles.title}>Novo Investimento</Text>
             </View>
             <Text style={Styles.description}>Selecione o nome da empresa:</Text>
             <View style={Styles.comboView}>
@@ -40,6 +43,19 @@ const CadastroInvestido = () => {
                 </Picker>
             </View>
 
+
+            <Text style={Styles.infoInvestimento}>**Nome da Empresa**</Text>
+            <Text style={Styles.infoInvestimento}>CNPJ: 00.000.000/0001-00</Text>
+            <Text style={Styles.infoInvestimento}>Valor da cota: R$ 1,00</Text>
+            
+            <View style={Styles.centerCotas}>
+                <Text style={Styles.infoInvestimento}>Minhas cotas</Text>
+                <NumericInput
+                    value={cotas}
+                    onChange={setCotas}
+                />
+            </View>
+            
             <View style={Styles.footer}>
                 <View style={Styles.buttonWrapper}>
                     <RectButton style={Styles.button} onPress={handleVoltar}>
@@ -56,7 +72,7 @@ const CadastroInvestido = () => {
                             <Icon name='plus-circle' color='#fff' size={24} />
                         </View>
                         <Text style={Styles.buttonText}>
-                            Cadastrar
+                            Investir
                     </Text>
                     </RectButton>
                 </View>
@@ -65,4 +81,4 @@ const CadastroInvestido = () => {
     )
 }
 
-export default CadastroInvestido
+export default NovoInvestimento

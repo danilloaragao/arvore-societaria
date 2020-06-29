@@ -34,7 +34,7 @@ const ResultadoPesquisa = () => {
                 <InvestidosPesquisa/>
                 </View>
                 <View style={Styles.sociosDe}>
-                    <Text style={Styles.description}>Investidoss da Empresa A</Text>
+                    <Text style={Styles.description}>Investidos da Empresa A</Text>
                     <ScrollView>
                     <InvestidosPesquisa/>
                     <InvestidosPesquisa/>

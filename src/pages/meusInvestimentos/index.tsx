@@ -4,10 +4,10 @@ import { RectButton, ScrollView } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
-import Investidos from '../../components/investidores'
+import Investidos from '../../components/investidos'
 import BackHomeBtn from '../../components/backHome'
 
-const MeusInvestidos = () => {
+const MeusInvestimentos = () => {
     const navigation = useNavigation()
 
     function handleVoltar() {
@@ -15,14 +15,14 @@ const MeusInvestidos = () => {
     }
 
     function handleCadastrar() {
-        navigation.navigate('CadastroInvestido')
+        navigation.navigate('NovoInvestimento')
     }
 
     return (
         <View style={Styles.container}>
             <View>
                 <BackHomeBtn />
-                <Text style={Styles.title}> Meus Investidos</Text>
+                <Text style={Styles.title}> Meus Investimentos</Text>
             </View>
             <ScrollView>
                 <Investidos/>
@@ -69,5 +69,5 @@ const MeusInvestidos = () => {
     )
 }
 
-export default MeusInvestidos
+export default MeusInvestimentos
 

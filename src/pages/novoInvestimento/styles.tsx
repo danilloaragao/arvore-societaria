@@ -55,9 +55,22 @@ const Styles = StyleSheet.create({
         fontFamily: 'Roboto_400Regular',
     },
 
+    infoInvestimento: {
+        color: '#6C6C80',
+        fontSize: 24,
+        marginTop: 4,
+        fontFamily: 'Roboto_400Regular',
+        textAlign: "center",
+        paddingTop: 24
+    },
+
     buttonWrapper: {
         flexDirection: 'row',
         justifyContent: 'space-around'
+    },
+
+    centerCotas:{
+        alignItems: 'center'
     },
 
     buttonText: {

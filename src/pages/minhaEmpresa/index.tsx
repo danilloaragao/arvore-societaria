@@ -14,7 +14,7 @@ const MinhaEmpresa = () => {
     }
 
     function handleMeusInvestidos() {
-        navigation.navigate('MeusInvestidos')
+        navigation.navigate('MeusInvestimentos')
     }
 
     return (
@@ -37,7 +37,7 @@ const MinhaEmpresa = () => {
                     <Icon name='trending-up' color='#fff' size={24} />
                 </View>
                 <Text style={Styles.buttonText}>
-                    Meus Investidos
+                    Meus Investimentos
                     </Text>
             </RectButton>
         </View>

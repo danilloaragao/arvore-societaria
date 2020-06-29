@@ -37,42 +37,44 @@ const Perfil = () => {
 
     return (
         <View style={Styles.container}>
-            <ScrollView>
+
             <View>
                 <BackHomeBtn />
                 <Text style={Styles.title}>Meu Perfil</Text>
             </View>
-            <Text>E-mail</Text>
-            <TextInput
-                style={Styles.input}
-                value={email}
-                onChangeText={setEmail}
-                autoCorrect={false} />
+            <ScrollView>
 
-            <Text>Senha Antiga</Text>
-            <TextInput
-                style={Styles.input}
-                value={previousPassword}
-                onChangeText={setpreviousPassword}
-                autoCorrect={false}
-                secureTextEntry={true} />
+                <Text>E-mail</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCorrect={false} />
 
-            <Text>Senha Nova</Text>
-            <TextInput
-                style={Styles.input}
-                value={newPassword}
-                onChangeText={setNewPassword}
-                autoCorrect={false}
-                secureTextEntry={true} />
+                <Text>Senha Antiga</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={previousPassword}
+                    onChangeText={setpreviousPassword}
+                    autoCorrect={false}
+                    secureTextEntry={true} />
 
-            <Text>Confirme a Senha Nova</Text>
-            <TextInput
-                style={Styles.input}
-                value={confirmNewPassword}
-                onChangeText={setConfirmNewPassword}
-                autoCorrect={false}
-                secureTextEntry={true} />
+                <Text>Senha Nova</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={newPassword}
+                    onChangeText={setNewPassword}
+                    autoCorrect={false}
+                    secureTextEntry={true} />
 
+                <Text>Confirme a Senha Nova</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={confirmNewPassword}
+                    onChangeText={setConfirmNewPassword}
+                    autoCorrect={false}
+                    secureTextEntry={true} />
+            </ScrollView>
 
             <RectButton style={Styles.button} onPress={handleAtualizar}>
                 <View style={Styles.buttonIcon}>
@@ -101,7 +103,7 @@ const Perfil = () => {
                     </Text>
             </RectButton>
 
-            </ScrollView>
+
         </View>
     )
 }

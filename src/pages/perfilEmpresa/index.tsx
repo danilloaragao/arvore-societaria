@@ -8,6 +8,7 @@ import BackHomeBtn from '../../components/backHome'
 const PerfilEmpresa = () => {
     const [name, setName] = useState('')
     const [cnpj, setCnpj] = useState('')
+    const [patrimonio, setPatrimonio] = useState('')
     const navigation = useNavigation()
 
     function handleCadastrar() {
@@ -48,7 +49,14 @@ const PerfilEmpresa = () => {
                 onChangeText={setCnpj}
                 autoCorrect={false} />
 
-<RectButton style={Styles.button} onPress={handleCadastrar}>
+            <Text>Patrimônio Líquido</Text>
+            <TextInput
+                style={Styles.input}
+                value={patrimonio}
+                onChangeText={setPatrimonio}
+                autoCorrect={false} />
+
+            <RectButton style={Styles.button} onPress={handleCadastrar}>
                 <Text style={Styles.buttonText}>
                     Atualizar
                     </Text>
