@@ -5,10 +5,11 @@ import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
+import SyncStorage from 'sync-storage';
 
 const Perfil = () => {
     const navigation = useNavigation()
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState(SyncStorage.get('email'))
     const [previousPassword, setpreviousPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmNewPassword, setConfirmNewPassword] = useState('')

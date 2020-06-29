@@ -1,60 +1,97 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, Alert } from 'react-native'
+import { View, Text, TextInput, Alert, KeyboardAvoidingView, Platform } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
+import Api from '../services/api'
+import Loading from '../../components/loading/loading'
 
 const CadastroUsuario = () => {
     const [name, setName] = useState('')
+    const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const navigation = useNavigation()
 
     function handleCadastrar() {
-        Alert.alert("","Cadastro Efetuado com sucesso!")
-        navigation.navigate('Login')
+        setLoading(true)
+
+        let inconsistencias = ''
+
+        if (name.trim().length <= 0)
+            inconsistencias += '- O nome não pode ser vazio.\n'
+
+        if (email.length <= 0 || email.indexOf('@') == -1)
+            inconsistencias += '- E-mail inválido.\n'
+
+        if (password.length < 6)
+            inconsistencias += '- A senha deve conter ao menos 6 caracteres.\n'
+
+        if (password != passwordConfirm)
+            inconsistencias += '- A senha e a confirmação da senha estão diferentes.\n'
+
+        if (inconsistencias.length > 0) {
+            Alert.alert('', `Favor corrigir o(s) pontos abaixo:\n\n${inconsistencias}`)
+            setLoading(false)
+            return
+        }
+        Api.post('/api/auth/signup', {
+            username: name,
+            email: email,
+            role: [""],
+            password: password
+        }).then(response => {
+            Alert.alert("", "Cadastro Efetuado com sucesso!")
+            navigation.navigate('Login')
+        }, error => {
+            Alert.alert("", "Desculpe, algo deu errado com o seu cadastro. Tente novamente mais tarde.")
+        })
+        setLoading(false)
     }
 
     return (
-        <View style={Styles.container}>
-            <Text style={Styles.title}>Cadastro</Text>
-            <Text>Nome</Text>
-            <TextInput
-                style={Styles.input}
-                value={name}
-                onChangeText={setName}
-                autoCorrect={false} />
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+            <View style={Styles.container}>
+                {loading ? <Loading /> : <></>}
+                <Text style={Styles.title}>Cadastro</Text>
+                <Text>Nome</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={name}
+                    onChangeText={setName}
+                    autoCorrect={false} />
 
-            <Text>E-mail</Text>
-            <TextInput
-                style={Styles.input}
-                value={email}
-                onChangeText={setEmail}
-                autoCorrect={false} />
+                <Text>E-mail</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCorrect={false} />
 
-            <Text>Senha</Text>
-            <TextInput
-                style={Styles.input}
-                value={password}
-                onChangeText={setPassword}
-                autoCorrect={false}
-                secureTextEntry={true} />
+                <Text>Senha</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={password}
+                    onChangeText={setPassword}
+                    autoCorrect={false}
+                    secureTextEntry={true} />
 
-            <Text>Confime sua Senha</Text>
-            <TextInput
-                style={Styles.input}
-                value={passwordConfirm}
-                onChangeText={setPasswordConfirm}
-                autoCorrect={false}
-                secureTextEntry={true} />
+                <Text>Confime sua Senha</Text>
+                <TextInput
+                    style={Styles.input}
+                    value={passwordConfirm}
+                    onChangeText={setPasswordConfirm}
+                    autoCorrect={false}
+                    secureTextEntry={true} />
 
-            <RectButton style={Styles.button} onPress={handleCadastrar}>
-                <Text style={Styles.buttonText}>
-                    Cadastrar
+                <RectButton style={Styles.button} onPress={handleCadastrar}>
+                    <Text style={Styles.buttonText}>
+                        Cadastrar
                     </Text>
-            </RectButton>
-        </View>
+                </RectButton>
+            </View>
+        </KeyboardAvoidingView>
     )
 }
 

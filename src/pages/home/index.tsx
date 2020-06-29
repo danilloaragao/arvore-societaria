@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
+import SyncStorage from 'sync-storage';
 
 const Home = () => {
     const navigation = useNavigation()
+    const user = SyncStorage.get('name')
 
     function handleMinhaEmpresa() {
         navigation.navigate('CadastroEmpresa')
@@ -22,7 +24,7 @@ const Home = () => {
 
     return (
         <View style={Styles.container}>
-            <Text style={Styles.title}>Bem vindo, **Nome Usuário**!</Text>
+            <Text style={Styles.title}>Bem vindo, {user}!</Text>
             <RectButton style={Styles.button} onPress={handlePerfil}>
                 <View style={Styles.buttonIcon}>
                     <Icon name='settings' color='#fff' size={24} />
