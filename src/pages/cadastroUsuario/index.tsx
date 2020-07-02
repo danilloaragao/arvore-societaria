@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import Api from '../services/api'
 import Loading from '../../components/loading/loading'
+import SyncStorage from 'sync-storage'
 
 const CadastroUsuario = () => {
     const [name, setName] = useState('')
@@ -13,6 +14,8 @@ const CadastroUsuario = () => {
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const navigation = useNavigation()
+
+    const headers = {'Authorization':`Bearer ${SyncStorage.get('token')}`}
 
     function handleCadastrar() {
         setLoading(true)
@@ -40,11 +43,11 @@ const CadastroUsuario = () => {
             username: name,
             email: email,
             role: [""],
-            password: password
-        }).then(response => {
+            password: password, 
+        },{headers: headers}).then(() => {
             Alert.alert("", "Cadastro Efetuado com sucesso!")
             navigation.navigate('Login')
-        }, error => {
+        }, () => {
             Alert.alert("", "Desculpe, algo deu errado com o seu cadastro. Tente novamente mais tarde.")
         })
         setLoading(false)

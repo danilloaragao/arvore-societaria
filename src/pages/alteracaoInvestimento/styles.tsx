@@ -46,12 +46,11 @@ const Styles = StyleSheet.create({
         textAlignVertical:'center'
     },
 
-
-
     infoCotasDet: {
         marginTop: 40,
         height: 100,
-        width: 110,
+        // width: 110,
+        width: 245,
         backgroundColor: '#fff',
         borderRadius: 10,
         fontSize: 16,

@@ -53,7 +53,20 @@ const Styles = StyleSheet.create({
     lineWrapper:{
         flexDirection: 'row',
         justifyContent: 'space-around'
-    }
+    },
+    
+    combo: {
+        height: 60,
+        width: '100%',
+    },
+
+    comboView: {
+        borderStyle: 'solid',
+        borderColor: "#20232a",
+        borderRadius: 16,
+        color: '#171510',
+        backgroundColor: '#bfb2a8',
+    },
 })
 
 export default Styles

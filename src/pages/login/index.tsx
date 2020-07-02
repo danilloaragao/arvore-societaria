@@ -34,7 +34,6 @@ const Login = () => {
             username: user,
             password: password
         }, ).then(response => {
-            console.log(response)
             SyncStorage.set('id', response.data['id'])
             SyncStorage.set('name', response.data['username'])
             SyncStorage.set('email', response.data['email'])
@@ -44,7 +43,6 @@ const Login = () => {
             Alert.alert("", "Usuário ou senha incorreto.")
         })
         setLoading(false)
-        // navigation.navigate('Home')
     }
 
     return (

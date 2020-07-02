@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Alert, Picker } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
@@ -6,23 +6,58 @@ import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
 import NumericInput from 'react-native-numeric-input'
+import { Empresa } from '../../interfaces/empresa'
+import Api from '../services/api'
+import SyncStorage from 'sync-storage'
+import Loading from '../../components/loading/loading'
 
 const NovoInvestimento = () => {
     const navigation = useNavigation()
-    const [name, setName] = useState('')
+    const [id, setId] = useState()
     const [cotas, setCotas] = useState(0)
+    const [empresas, setEmpresas] = useState<Empresa[]>()
+    const [selectedEmpresa, setSelectedEmpresa] = useState<Empresa>()
+    const [loading, setLoading] = useState(false)
+    const headers = { 'Authorization': `Bearer ${SyncStorage.get('token')}` }
+
+    useEffect(() => {
+        Api.get('/empresa', { headers: headers }).then(response => {
+            setEmpresas(response.data)
+        })
+    }, [])
+
+    useEffect(() => {
+        if (empresas) {
+            setSelectedEmpresa(null)
+            setSelectedEmpresa(empresas.filter(e => e.id == id)[0])
+            setCotas(0)
+        }
+    }, [id])
 
     function handleVoltar() {
         navigation.goBack()
     }
 
     function handleCadastrar() {
-        Alert.alert("", "Investimento realizado com sucesso!")
-        navigation.goBack()
+        setLoading(true)
+        Api.post('/investimento', {
+            idEmpresa: selectedEmpresa.id,
+            idInvestidor: JSON.parse(SyncStorage.get('minhaEmpresa'))['id'],
+            qtdCotas: cotas,
+            precoCota: (selectedEmpresa.patrimonio / selectedEmpresa.qtdCotasTotal)
+        }, { headers: headers }).then((resp) => {
+            Alert.alert("", "Investimento realizado com sucesso.")
+        }, error => {
+            Alert.alert("", "Desculpe, algo deu errado com o seu cadastro. Tente novamente mais tarde.")
+        })
+        setLoading(false)
     }
+
+    if (!empresas) return (<Loading />)
 
     return (
         <View style={Styles.container}>
+            {loading ? <Loading /> : <></>}
             <View>
                 <BackHomeBtn />
                 <Text style={Styles.title}>Novo Investimento</Text>
@@ -30,32 +65,26 @@ const NovoInvestimento = () => {
             <Text style={Styles.description}>Selecione o nome da empresa:</Text>
             <View style={Styles.comboView}>
                 <Picker
-                    selectedValue={name}
                     style={Styles.combo}
-                    onValueChange={(itemValue, itemIndex) => setName(itemValue)}>
-                    <Picker.Item label="Empresa A" value="1" />
-                    <Picker.Item label="Empresa B" value="2" />
-                    <Picker.Item label="Empresa C" value="3" />
-                    <Picker.Item label="Empresa D" value="4" />
-                    <Picker.Item label="Empresa E" value="5" />
-                    <Picker.Item label="Empresa F" value="6" />
-                    <Picker.Item label="Empresa G" value="7" />
+                    onValueChange={(itemValue, itemIndex) => setId(itemValue)}>
+                    <Picker.Item key={'0'} label={'Selecione uma empresa'} value={0} />
+                    {empresas.map(e => <Picker.Item key={String(e.id)} label={e.name} value={e.id} />)}
                 </Picker>
             </View>
 
+            <Text style={Styles.infoInvestimento}>{selectedEmpresa ? selectedEmpresa.name : ''}</Text>
+            <Text style={Styles.infoInvestimento}>{selectedEmpresa ? 'CNPJ: ' + selectedEmpresa.cnpj : ''}</Text>
+            <Text style={Styles.infoInvestimento}>{selectedEmpresa ? 'Valor da cota: R$ ' + selectedEmpresa.patrimonio / selectedEmpresa.qtdCotasTotal : ''}</Text>
+            {selectedEmpresa ? (
+                <View style={Styles.centerCotas}>
+                    <Text style={Styles.infoInvestimento}>Minhas cotas</Text>
+                    <NumericInput
+                        initValue={0}
+                        value={cotas}
+                        onChange={setCotas}
+                    />
+                </View>) : <></>}
 
-            <Text style={Styles.infoInvestimento}>**Nome da Empresa**</Text>
-            <Text style={Styles.infoInvestimento}>CNPJ: 00.000.000/0001-00</Text>
-            <Text style={Styles.infoInvestimento}>Valor da cota: R$ 1,00</Text>
-            
-            <View style={Styles.centerCotas}>
-                <Text style={Styles.infoInvestimento}>Minhas cotas</Text>
-                <NumericInput
-                    value={cotas}
-                    onChange={setCotas}
-                />
-            </View>
-            
             <View style={Styles.footer}>
                 <View style={Styles.buttonWrapper}>
                     <RectButton style={Styles.button} onPress={handleVoltar}>

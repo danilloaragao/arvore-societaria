@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, TextInput, Alert } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
@@ -6,23 +6,71 @@ import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
 import NumericInput from 'react-native-numeric-input'
 import { Feather as Icon } from '@expo/vector-icons'
+import { Investido } from '../../interfaces/investido'
+import SyncStorage from 'sync-storage'
+import Loading from '../../components/loading/loading'
+import { Empresa } from '../../interfaces/empresa'
+import Api from '../services/api'
 
 const alteracaoInvestimento = () => {
-    const [name, setName] = useState('Empresa A')
-    const [cotas, setCotas] = useState(10)
+    // const valorCotas = empInvestido.investido.patrimonio/empInvestido.investido.qtdCotasTotal
+    // const rentabilidade = (empInvestido.investido.patrimonio/empInvestido.investido.qtdCotasTotal)
+    const [empInvestida, setInvestido] = useState<Investido>(JSON.parse(SyncStorage.get('investimentoAlteracao')))
+    const [cotas, setCotas] = useState(empInvestida.qtdCotas)
+    const [valorCotas, setValorCotas] = useState(empInvestida.investido.patrimonio / empInvestida.investido.qtdCotasTotal)
+    const [name, setName] = useState(empInvestida.investido.name)
+    const [diffCotas, setDiffCotas] = useState(0)
+    const headers = { 'Authorization': `Bearer ${SyncStorage.get('token')}` }
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        setLoading(false)
+    }, [empInvestida])
+
+    useEffect(() => {
+        setDiffCotas(cotas - empInvestida.qtdCotas)
+    }, [cotas])
+
     const navigation = useNavigation()
 
     function handleCadastrar() {
-        Alert.alert("", "Atualização efetuada com sucesso!")
-        navigation.goBack()
+        setLoading(true)
+        if (diffCotas >= 0){
+            Api.post('/investimento', {
+                idEmpresa: empInvestida.investido.id,
+                idInvestidor: JSON.parse(SyncStorage.get('minhaEmpresa'))['id'],
+                qtdCotas: diffCotas
+            }, { headers: headers }).then((resp) => {
+                Alert.alert("", "Investimento realizado com sucesso.")
+                navigation.goBack()
+            }, error => {
+                Alert.alert("", "Desculpe, algo deu errado com o seu cadastro. Tente novamente mais tarde.")
+            })
+        }
+        else{
+            Api.delete('/investimento', {data: {
+                idEmpresa: empInvestida.investido.id,
+                idInvestidor: JSON.parse(SyncStorage.get('minhaEmpresa'))['id'],
+                qtdCotas: -diffCotas
+            }, headers: headers}).then((resp) => {
+                Alert.alert("", "Investimento realizado com sucesso.")
+                navigation.goBack()
+            }, error => {
+                Alert.alert("", "Desculpe, algo deu errado com o seu cadastro. Tente novamente mais tarde.")
+            })
+        }
+        setLoading(false)
     }
 
     function handleVoltar() {
         navigation.goBack()
     }
 
+    if (!empInvestida) return <Loading />
+
     return (
         <View style={Styles.container}>
+            {loading ? <Loading /> : <></>}
             <View>
                 <BackHomeBtn />
                 <Text style={Styles.title}>Meus Investimentos</Text>
@@ -31,7 +79,6 @@ const alteracaoInvestimento = () => {
             <TextInput
                 style={Styles.input}
                 value={name}
-                onChangeText={setName}
                 autoCorrect={false}
                 editable={false} />
 
@@ -45,10 +92,10 @@ const alteracaoInvestimento = () => {
 
                 <View style={Styles.infoCotasDet}>
                     <Text style={Styles.textoTituloInfo}>Valor da Cota</Text>
-                    <Text style={Styles.textoInfo}>R$ 10,00</Text>
+                    <Text style={Styles.textoInfo}>R$ {valorCotas.toFixed(2)}</Text>
                 </View>
 
-                <View style={Styles.infoCotasDet}>
+                {/* <View style={Styles.infoCotasDet}>
                     <Text style={Styles.textoTituloInfo}>Rentabilidade</Text>
 
                     <Text style={Styles.textoInfo}>
@@ -56,7 +103,7 @@ const alteracaoInvestimento = () => {
                         <Icon name='chevrons-down' color='#940000' size={24} />
                         10%
                     </Text>
-                </View>
+                </View> */}
 
             </View>
 
