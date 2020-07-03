@@ -54,9 +54,9 @@ const CadastroUsuario = () => {
     }
 
     return (
-        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior={'padding'}>
             <View style={Styles.container}>
-                {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
                 <Text style={Styles.title}>Cadastro</Text>
                 <Text>Nome</Text>
                 <TextInput
@@ -99,4 +99,3 @@ const CadastroUsuario = () => {
 }
 
 export default CadastroUsuario
-

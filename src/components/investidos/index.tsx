@@ -4,7 +4,6 @@ import { Feather as Icon } from '@expo/vector-icons'
 import Styles from './styles'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import { Investido } from '../../interfaces/investido'
 import SyncStorage from 'sync-storage'
 import Api from '../../pages/services/api'
 
@@ -54,4 +53,3 @@ const Investidos = (props) => {
 }
 
 export default Investidos
-

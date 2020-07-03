@@ -10,6 +10,7 @@ import { Empresa } from '../../interfaces/empresa'
 import Api from '../services/api'
 import SyncStorage from 'sync-storage'
 import Loading from '../../components/loading/loading'
+import Logout from '../../components/logout'
 
 const NovoInvestimento = () => {
     const navigation = useNavigation()
@@ -53,13 +54,13 @@ const NovoInvestimento = () => {
         setLoading(false)
     }
 
-    if (!empresas) return (<Loading />)
+    if (!empresas) return <Loading visible={true}/>
 
     return (
         <View style={Styles.container}>
-            {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}>Novo Investimento</Text>
             </View>
             <Text style={Styles.description}>Selecione o nome da empresa:</Text>

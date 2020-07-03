@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, Alert } from 'react-native'
+import React from 'react'
+import { View, Text } from 'react-native'
 import Styles from './styles'
-import { Empresa } from '../../interfaces/empresa'
-import Loading from '../loading/loading'
 
 const InvestidosPesquisa = (props) => {
     const empresa = props.empresa
@@ -16,4 +14,3 @@ const InvestidosPesquisa = (props) => {
 }
 
 export default InvestidosPesquisa
-

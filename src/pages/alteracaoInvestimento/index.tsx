@@ -4,17 +4,14 @@ import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
+import Logout from '../../components/logout'
 import NumericInput from 'react-native-numeric-input'
-import { Feather as Icon } from '@expo/vector-icons'
 import { Investido } from '../../interfaces/investido'
 import SyncStorage from 'sync-storage'
 import Loading from '../../components/loading/loading'
-import { Empresa } from '../../interfaces/empresa'
 import Api from '../services/api'
 
 const alteracaoInvestimento = () => {
-    // const valorCotas = empInvestido.investido.patrimonio/empInvestido.investido.qtdCotasTotal
-    // const rentabilidade = (empInvestido.investido.patrimonio/empInvestido.investido.qtdCotasTotal)
     const [empInvestida, setInvestido] = useState<Investido>(JSON.parse(SyncStorage.get('investimentoAlteracao')))
     const [cotas, setCotas] = useState(empInvestida.qtdCotas)
     const [valorCotas, setValorCotas] = useState(empInvestida.investido.patrimonio / empInvestida.investido.qtdCotasTotal)
@@ -66,13 +63,13 @@ const alteracaoInvestimento = () => {
         navigation.goBack()
     }
 
-    if (!empInvestida) return <Loading />
+    if (!empInvestida) return <Loading visible={true}/>
 
     return (
         <View style={Styles.container}>
-            {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}>Meus Investimentos</Text>
             </View>
             <Text>Nome</Text>
@@ -123,4 +120,3 @@ const alteracaoInvestimento = () => {
 }
 
 export default alteracaoInvestimento
-

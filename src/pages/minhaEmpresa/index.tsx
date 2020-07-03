@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
-import { View, Text, Alert } from 'react-native'
+import React from 'react'
+import { View, Text } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
 import SyncStorage from 'sync-storage'
+import Logout from '../../components/logout'
 
 const MinhaEmpresa = () => {
     const navigation = useNavigation()
@@ -24,7 +25,7 @@ const MinhaEmpresa = () => {
     return (
         <View style={Styles.container}>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}>{empresa.name}</Text>
             </View>
             <RectButton style={Styles.button} onPress={handlePerfil}>
@@ -49,4 +50,3 @@ const MinhaEmpresa = () => {
 }
 
 export default MinhaEmpresa
-

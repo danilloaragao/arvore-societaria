@@ -9,6 +9,7 @@ import { Empresa } from '../../interfaces/empresa'
 import SyncStorage from 'sync-storage'
 import Api from '../services/api'
 import Loading from '../../components/loading/loading'
+import Logout from '../../components/logout'
 
 const Pesquisa = () => {
     const navigation = useNavigation()
@@ -67,13 +68,13 @@ const Pesquisa = () => {
         navigation.navigate('ResultadoPesquisa', { empresaPesquisa: selectedEmpresa })
     }
 
-    if (!empresas) return (<Loading />)
+    if (!empresas) return <Loading visible={true}/>
 
     return (
         <View style={Styles.container}>
-            {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}>Pesquisa</Text>
             </View>
 
@@ -105,4 +106,3 @@ const Pesquisa = () => {
 }
 
 export default Pesquisa
-

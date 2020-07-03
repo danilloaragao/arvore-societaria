@@ -9,8 +9,11 @@ import Loading from '../../components/loading/loading'
 import Api from '../services/api'
 import SyncStorage from 'sync-storage'
 import { Investido } from '../../interfaces/investido'
+import Logout from '../../components/logout'
+import { useNavigation } from '@react-navigation/native'
 
 const ResultadoPesquisa = ({ route }) => {
+    const navigation = useNavigation()
     const [empresasInvestidas, setEmpresasInvestidas] = useState<Investido[]>()
     const [empresasInvestidoras, setEmpresasInvestidoras] = useState<Investido[]>()
     const [empresaPesquisada, setEmpresaPesquisada] = useState<Empresa>()
@@ -18,11 +21,8 @@ const ResultadoPesquisa = ({ route }) => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        setEmpresaPesquisada(route.params.empresaPesquisa)
-    }, [])
-
-    useEffect(() => {
         setLoading(true)
+        setEmpresaPesquisada(route.params.empresaPesquisa)
         if (empresaPesquisada) {
             Api.get(`/investimento/investidor/${empresaPesquisada.id}`, { headers: headers }).then(response => {
                 if (response.data.length > 0)
@@ -39,23 +39,19 @@ const ResultadoPesquisa = ({ route }) => {
             }, () => { })
         }
         setLoading(false)
-    },[empresaPesquisada])
-
-
+    },[])
 
     function handleTrocaPesquisa(empresa) {
-        // console.log(empresa.investido)
-        // setEmpresaPesquisada(empresa.investido)
-        // reload()
+        navigation.navigate('ResultadoPesquisa', { empresaPesquisa: empresa.investido })
     }
 
-    if (!empresaPesquisada) return (<Loading />)
+    if (!empresaPesquisada) return <Loading visible={true}/>
 
     return (
         <View style={Styles.container}>
-            {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}>Resultado da Pesquisa</Text>
             </View>
             <Text style={Styles.title}>Quadro de Investidores</Text>
@@ -90,4 +86,3 @@ const ResultadoPesquisa = ({ route }) => {
 }
 
 export default ResultadoPesquisa
-

@@ -4,20 +4,27 @@ import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
+import SyncStorage from 'sync-storage'
 
-const BackHomeBtn = () => {
+const Logout = () => {
     const navigation = useNavigation()
-    function goBackHome() {
-        navigation.navigate('Home')
+    function logout() {
+        let keys = SyncStorage.getAllKeys()
+
+        keys.forEach(key => {
+            SyncStorage.remove(key)
+        });
+
+        navigation.navigate('Login')
     }
 
     return (
-        <RectButton style={Styles.searchButtonHome}>
+        <RectButton style={Styles.buttonLogout}>
             <View style={Styles.buttonIconHome}>
-                <Icon name='home' color='#fff' size={24} onPress={goBackHome} />
+                <Icon name='log-out' color='#fff' size={24} onPress={logout} />
             </View>
         </RectButton>
     )
 }
 
-export default BackHomeBtn
+export default Logout

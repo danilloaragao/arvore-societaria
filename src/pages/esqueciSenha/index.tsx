@@ -4,6 +4,7 @@ import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import Api from '../services/api'
+import Loading from '../../components/loading/loading'
 
 const EsqueciSenha = () => {
     const [email, setEmail] = useState('')
@@ -39,6 +40,7 @@ const EsqueciSenha = () => {
 
         return (
             <View style={Styles.container}>
+                <Loading visible={loading}/>
                 <Text style={Styles.title}>Recuperação de Senha</Text>
 
                 <Text>E-mail</Text>
@@ -58,4 +60,3 @@ const EsqueciSenha = () => {
     }
 
     export default EsqueciSenha
-

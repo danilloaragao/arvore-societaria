@@ -8,6 +8,7 @@ import BackHomeBtn from '../../components/backHome'
 import SyncStorage from 'sync-storage';
 import Loading from '../../components/loading/loading'
 import Api from '../services/api'
+import Logout from '../../components/logout'
 
 const Perfil = () => {
     const navigation = useNavigation()
@@ -48,7 +49,7 @@ const Perfil = () => {
             SyncStorage.set('email', email)
             Alert.alert("", "Atualização efetuado com sucesso!")
             navigation.goBack()
-        }, (error) => {
+        }, () => {
             Alert.alert("", "Desculpe, algo deu errado... Tente novamente mais tarde.")
         })
         setLoading(false)
@@ -82,12 +83,12 @@ const Perfil = () => {
     }
 
     return (
-        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined} enabled={false}>
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior={'padding'}>
             <View style={Styles.container}>
-                {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
 
                 <View>
-                    <BackHomeBtn />
+                    <BackHomeBtn /><Logout/>
                     <Text style={Styles.title}>Meu Perfil</Text>
                 </View>
                 <ScrollView>
@@ -158,4 +159,3 @@ const Perfil = () => {
 }
 
 export default Perfil
-

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View, ImageBackground, Text, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, ImageBackground, Text, TextInput, KeyboardAvoidingView, Alert, CheckBox } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -7,10 +7,12 @@ import Styles from './styles'
 import Loading from '../../components/loading/loading'
 import Api from '../services/api'
 import SyncStorage from 'sync-storage';
+import { AsyncStorage } from 'react-native';
 
 const Login = () => {
-    const [user, setUser] = useState('')
+    const [user, setUser] = useState(SyncStorage.get('username'))
     const [password, setPassword] = useState('')
+    const [manterLogado, setManterLogado] = useState(SyncStorage.get('lembrarMe'))
     const [loading, setLoading] = useState(false)
     const navigation = useNavigation()
 
@@ -22,33 +24,41 @@ const Login = () => {
         navigation.navigate('EsqueciSenha')
     }
 
+    useEffect(() => {
+        setUser(SyncStorage.get('username'))
+        let lembrar = SyncStorage.get('lembrarMe')
+        if (lembrar && JSON.parse(lembrar))
+            navigation.navigate('Home')
+    }, []);
+
     function handleLogin() {
         setLoading(true)
-        if (user.trim().length <= 0 || password.length <= 0 ){
-            Alert.alert('', 'Usuário ou senha inválido.')
-            setLoading(false)
-            return
-        }
+            if (user.trim().length <= 0 || password.length <= 0) {
+                Alert.alert('', 'Usuário ou senha inválido.')
+                setLoading(false)
+                return
+            }
 
-        Api.post('/api/auth/signin', {
-            username: user,
-            password: password
-        }, ).then(response => {
-            SyncStorage.set('id', response.data['id'])
-            SyncStorage.set('name', response.data['username'])
-            SyncStorage.set('email', response.data['email'])
-            SyncStorage.set('token', response.data['token'])
-            navigation.navigate('Home')
-        }, error =>{
-            Alert.alert("", "Usuário ou senha incorreto.")
-        })
+            Api.post('/api/auth/signin', {
+                username: user,
+                password: password
+            }).then(response => {
+                SyncStorage.set('id', response.data['id'])
+                SyncStorage.set('name', response.data['username'])
+                SyncStorage.set('email', response.data['email'])
+                SyncStorage.set('token', response.data['token'])
+                AsyncStorage.setItem('lembrarMe', JSON.stringify(manterLogado))
+                navigation.navigate('Home')
+            }, error => {
+                Alert.alert("", "Usuário ou senha incorreto.")
+            })
         setLoading(false)
     }
 
     return (
-        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior={'padding'}>
             <View style={Styles.container}>
-            {loading ? <Loading/> : <></>}
+                <Loading visible={loading}/>
                 <ImageBackground
                     source={require('../../assets/arvore_fundo.png')}
                     style={Styles.container}
@@ -74,6 +84,14 @@ const Login = () => {
                         onChangeText={setPassword}
                         secureTextEntry={true}
                         autoCorrect={false} />
+                    <View style={Styles.manterLogado}>
+                        <CheckBox
+                            value={manterLogado}
+                            onValueChange={setManterLogado}
+                        />
+                        <Text>Manter logado</Text>
+                    </View>
+
                     <View>
                         <Text onPress={handleNavigationToCadastroUsuario}>Cadastrar</Text>
                         <Text style={Styles.esqueciSenha} onPress={handleNavigationToEsqueciSenha}>Esqueci minha senha</Text>
@@ -92,4 +110,3 @@ const Login = () => {
 }
 
 export default Login
-

@@ -25,6 +25,13 @@ const Styles = StyleSheet.create({
         textAlign: "center",
     },
 
+    manterLogado:{
+        flexDirection: 'row',
+        // justifyContent: 'space-around'
+        alignItems:'center',
+        paddingBottom: 10
+    },
+
     footer: {},
 
     input: {

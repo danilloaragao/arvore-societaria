@@ -49,7 +49,6 @@ const Styles = StyleSheet.create({
     infoCotasDet: {
         marginTop: 40,
         height: 100,
-        // width: 110,
         width: 245,
         backgroundColor: '#fff',
         borderRadius: 10,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, Alert } from 'react-native'
-import { RectButton, ScrollView } from 'react-native-gesture-handler'
+import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import Styles from './styles'
 import BackHomeBtn from '../../components/backHome'
@@ -8,6 +8,7 @@ import Loading from '../../components/loading/loading'
 import StringUtils from '../utils/stringUtils'
 import Api from '../services/api'
 import SyncStorage from 'sync-storage'
+import Logout from '../../components/logout'
 
 const CadastroEmpresa = () => {
     const [name, setName] = useState('')
@@ -60,9 +61,9 @@ const CadastroEmpresa = () => {
 
     return (
         <View style={Styles.container}>
-            {loading ? <Loading /> : <></>}
+           <Loading visible={loading}/>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}>Nova Empresa</Text>
             </View>
             <Text>Nome</Text>
@@ -106,4 +107,3 @@ const CadastroEmpresa = () => {
 }
 
 export default CadastroEmpresa
-

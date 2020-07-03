@@ -10,6 +10,7 @@ import Loading from '../../components/loading/loading'
 import Api from '../services/api'
 import SyncStorage from 'sync-storage'
 import { Investido } from '../../interfaces/investido'
+import Logout from '../../components/logout'
 
 const MeusInvestimentos = () => {
     const navigation = useNavigation()
@@ -33,13 +34,13 @@ const MeusInvestimentos = () => {
         navigation.navigate('NovoInvestimento')
     }
 
-    if (!investidos) return (<Loading />)
+    if (!investidos) return <Loading visible={true}/>
 
     return (
         <View style={Styles.container}>
-        {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}> Meus Investimentos</Text>
             </View>
 
@@ -71,4 +72,3 @@ const MeusInvestimentos = () => {
 }
 
 export default MeusInvestimentos
-

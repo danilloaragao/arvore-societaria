@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { View, Text, TextInput, Alert } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
@@ -9,6 +9,7 @@ import StringUtils from '../utils/stringUtils'
 import Loading from '../../components/loading/loading'
 import Api from '../services/api'
 import { Empresa } from '../../interfaces/empresa'
+import Logout from '../../components/logout'
 
 const PerfilEmpresa = () => {
     let empresa: Empresa = JSON.parse(SyncStorage.get('minhaEmpresa'))
@@ -77,9 +78,9 @@ const PerfilEmpresa = () => {
 
     return (
         <View style={Styles.container}>
-            {loading ? <Loading /> : <></>}
+            <Loading visible={loading}/>
             <View>
-                <BackHomeBtn />
+                <BackHomeBtn /><Logout/>
                 <Text style={Styles.title}>Dados da Empresa</Text>
             </View>
             <Text>Nome</Text>
@@ -120,4 +121,3 @@ const PerfilEmpresa = () => {
 }
 
 export default PerfilEmpresa
-
