@@ -46,7 +46,7 @@ const ResultadoPesquisa = () => {
     }, [empresaPesquisada])
 
     function handleTrocaPesquisa(empresa) {
-
+        setEmpresaPesquisada(empresa)
     }
 
     if (!empresaPesquisada) return <Loading visible={true} />
@@ -64,7 +64,7 @@ const ResultadoPesquisa = () => {
                     <Text style={Styles.description}>Investidores da {empresaPesquisada.name}</Text>
                     <ScrollView>
                         {empresasInvestidoras ? empresasInvestidoras.map((emp, index) => (
-                            <RectButton key={index} onPress={() => handleTrocaPesquisa(emp)}>
+                            <RectButton key={index} onPress={() => handleTrocaPesquisa(emp.investidor)}>
                                 <InvestidosPesquisa empresa={emp.investidor} />
                             </RectButton>
                         )) : <></>}
@@ -77,7 +77,7 @@ const ResultadoPesquisa = () => {
                     <Text style={Styles.description}>Investidos da {empresaPesquisada.name}</Text>
                     <ScrollView>
                         {empresasInvestidas ? empresasInvestidas.map((emp, index) => (
-                            <RectButton key={index} onPress={() => handleTrocaPesquisa(emp)}>
+                            <RectButton key={index} onPress={() => handleTrocaPesquisa(emp.investido)}>
                                 <InvestidosPesquisa empresa={emp.investido} />
                             </RectButton>
                         )) : <></>}
