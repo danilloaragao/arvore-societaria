@@ -4,7 +4,7 @@ import Styles from './styles'
 
 const InvestidosPesquisa = (props) => {
     const empresa = props.empresa
-if(!empresa) return <></>
+if(!empresa || empresa.name == "") return <></>
     return (
         <View key={empresa.id} style={Styles.container}>
             <Text style={Styles.description}>Nome: {empresa.name}</Text>

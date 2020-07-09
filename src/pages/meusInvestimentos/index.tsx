@@ -17,14 +17,14 @@ const MeusInvestimentos = () => {
     const [loading, setLoading] = useState(true)
     const [investidos, setInvestidos] = useState<Investido[]>()
     const headers = { 'Authorization': `Bearer ${SyncStorage.get('token')}` }
-    const id = SyncStorage.get('id')
+    const id = JSON.parse(SyncStorage.get('minhaEmpresa')).id
 
     useEffect(() => {
         Api.get(`/investimento/investidor/${id}`, { headers: headers }).then(response => {
             setInvestidos(response.data)
             setLoading(false)
         })
-    })
+    },[])
 
     function handleVoltar() {
         navigation.goBack()
