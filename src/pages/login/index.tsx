@@ -13,7 +13,7 @@ const Login = () => {
     const [user, setUser] = useState(SyncStorage.get('username'))
     const [password, setPassword] = useState('')
     const [manterLogado, setManterLogado] = useState(SyncStorage.get('lembrarMe'))
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const navigation = useNavigation()
 
     function handleNavigationToCadastroUsuario() {
@@ -23,17 +23,21 @@ const Login = () => {
     function handleNavigationToEsqueciSenha() {
         navigation.navigate('EsqueciSenha')
     }
-
-    useEffect(() => {
-        setUser(SyncStorage.get('username'))
-        let lembrar = SyncStorage.get('lembrarMe')
-        if (lembrar && JSON.parse(lembrar))
-            navigation.navigate('Home')
-    }, []);
+useEffect(()=>{
+    setLoading(false)
+},[])
+    // useEffect(() => {
+    //     setUser(SyncStorage.get('username'))
+    //     let lembrar = SyncStorage.get('lembrarMe')
+    //     if (lembrar && JSON.parse(lembrar))
+    //         navigation.navigate('Home')
+    // }, []);
 
     function handleLogin() {
-        setLoading(true)
-            if (user.trim().length <= 0 || password.length <= 0) {
+        setTimeout(() => {
+            setLoading(true)
+        }, 10);
+            if (!user || user.trim().length <= 0 || password.length <= 0) {
                 Alert.alert('', 'Usuário ou senha inválido.')
                 setLoading(false)
                 return
@@ -52,13 +56,15 @@ const Login = () => {
             }, error => {
                 Alert.alert("", "Usuário ou senha incorreto.")
             })
-        setLoading(false)
+            setTimeout(() => {
+                setLoading(false)
+            }, 10);
     }
 
     return (
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={'padding'}>
+        <Loading visible={loading}/>
             <View style={Styles.container}>
-                <Loading visible={loading}/>
                 <ImageBackground
                     source={require('../../assets/arvore_fundo.png')}
                     style={Styles.container}
@@ -66,7 +72,7 @@ const Login = () => {
                 ></ImageBackground>
                 <View style={Styles.main}>
                     <View>
-                        <Text style={Styles.title}>Árvore Societária</Text>
+                        <Text style={Styles.title}>Money Trees</Text>
                     </View>
                 </View>
 

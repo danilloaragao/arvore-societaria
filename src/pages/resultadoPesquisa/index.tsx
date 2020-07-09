@@ -22,8 +22,13 @@ const ResultadoPesquisa = ({ route }) => {
 
     useEffect(() => {
         setLoading(true)
-        setEmpresaPesquisada(route.params.empresaPesquisa)
+        setEmpresaPesquisada(JSON.parse(SyncStorage.get('empresaPesquisa')))
+        setLoading(false)
+    },[])
+
+    useEffect(() => {
         if (empresaPesquisada) {
+            console.log(empresaPesquisada)
             Api.get(`/investimento/investidor/${empresaPesquisada.id}`, { headers: headers }).then(response => {
                 if (response.data.length > 0)
                     setEmpresasInvestidas(response.data)
@@ -35,14 +40,14 @@ const ResultadoPesquisa = ({ route }) => {
                 if (response.data.length > 0)
                     setEmpresasInvestidoras(response.data)
                 else
-                    setEmpresasInvestidas(null)
+                setEmpresasInvestidoras(null)
             }, () => { })
         }
         setLoading(false)
-    },[])
+    },[empresaPesquisada])
 
     function handleTrocaPesquisa(empresa) {
-        navigation.navigate('ResultadoPesquisa', { empresaPesquisa: empresa.investido })
+
     }
 
     if (!empresaPesquisada) return <Loading visible={true}/>

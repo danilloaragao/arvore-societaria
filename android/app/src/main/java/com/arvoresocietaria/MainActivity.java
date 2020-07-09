@@ -1,4 +1,4 @@
-package com.arvoresocietaria;
+package com.moneytrees;
 
 import android.os.Bundle;
 

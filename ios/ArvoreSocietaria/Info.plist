@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>ArvoreSocietaria</string>
+	<string>Moneytrees</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -57,26 +57,26 @@
 		</dict>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Allow ArvoreSocietaria to access your calendar</string>
+	<string>Allow Moneytrees to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow ArvoreSocietaria to use the camera</string>
+	<string>Allow Moneytrees to use the camera</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Allow ArvoreSocietaria experiences to access your contacts</string>
+	<string>Allow Moneytrees experiences to access your contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow ArvoreSocietaria to use your location</string>
+	<string>Allow Moneytrees to use your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Allow ArvoreSocietaria to use your location</string>
+	<string>Allow Moneytrees to use your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow ArvoreSocietaria to use your location</string>
+	<string>Allow Moneytrees to use your location</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow ArvoreSocietaria to access your microphone</string>
+	<string>Allow Moneytrees to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow ArvoreSocietaria to access your device's accelerometer</string>
+	<string>Allow Moneytrees to access your device's accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Give ArvoreSocietaria periences permission to save photos</string>
+	<string>Give Moneytrees periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Give ArvoreSocietaria periences permission to access your photos</string>
+	<string>Give Moneytrees periences permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>Allow ArvoreSocietaria to access your reminders</string>
+	<string>Allow Moneytrees to access your reminders</string>
 </dict>
 </plist>

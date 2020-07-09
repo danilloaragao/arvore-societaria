@@ -52,7 +52,8 @@ const CadastroEmpresa = () => {
             qtdCotasTotal: parsedCotas
         },{headers: headers}).then(() => { 
             Alert.alert("", "Empresa cadastrada com sucesso.")
-            navigation.navigate('MinhaEmpresa')
+            // navigation.navigate('MinhaEmpresa')
+            navigation.goBack()
         }, error => {
             Alert.alert("", "Desculpe, algo deu errado com o seu cadastro. Tente novamente mais tarde.")
         })

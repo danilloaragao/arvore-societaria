@@ -65,7 +65,9 @@ const Pesquisa = () => {
     }
 
     function handleNavigation() {
-        navigation.navigate('ResultadoPesquisa', { empresaPesquisa: selectedEmpresa })
+        SyncStorage.set('empresaPesquisa', JSON.stringify(selectedEmpresa))
+        // navigation.navigate('ResultadoPesquisa', { empresaPesquisa: selectedEmpresa })
+        navigation.navigate('ResultadoPesquisa')
     }
 
     if (!empresas) return <Loading visible={true}/>

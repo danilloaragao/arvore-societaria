@@ -43,33 +43,31 @@ const Home = () => {
             <View>
                 <Logout />
             </View>
-            <View style={Styles.container}>
-                <Text style={Styles.title}>Bem vindo, {user}!</Text>
-                <RectButton style={Styles.button} onPress={handlePerfil}>
-                    <View style={Styles.buttonIcon}>
-                        <Icon name='settings' color='#fff' size={24} />
-                    </View>
-                    <Text style={Styles.buttonText}>
-                        Meu Perfil
+            <Text style={Styles.title}>Bem vindo, {user}!</Text>
+            <RectButton style={Styles.button} onPress={handlePerfil}>
+                <View style={Styles.buttonIcon}>
+                    <Icon name='settings' color='#fff' size={24} />
+                </View>
+                <Text style={Styles.buttonText}>
+                    Meu Perfil
                     </Text>
-                </RectButton>
-                <RectButton style={Styles.button} onPress={handleMinhaEmpresa}>
-                    <View style={Styles.buttonIcon}>
-                        <Icon name='star' color='#fff' size={24} />
-                    </View>
-                    <Text style={Styles.buttonText}>
-                        Minha Empresa
+            </RectButton>
+            <RectButton style={Styles.button} onPress={handleMinhaEmpresa}>
+                <View style={Styles.buttonIcon}>
+                    <Icon name='star' color='#fff' size={24} />
+                </View>
+                <Text style={Styles.buttonText}>
+                    Minha Empresa
                     </Text>
-                </RectButton>
-                <RectButton style={Styles.button} onPress={handlePesquisa}>
-                    <View style={Styles.buttonIcon}>
-                        <Icon name='search' color='#fff' size={24} />
-                    </View>
-                    <Text style={Styles.buttonText}>
-                        Pesquisar
+            </RectButton>
+            <RectButton style={Styles.button} onPress={handlePesquisa}>
+                <View style={Styles.buttonIcon}>
+                    <Icon name='search' color='#fff' size={24} />
+                </View>
+                <Text style={Styles.buttonText}>
+                    Pesquisar
                     </Text>
-                </RectButton>
-            </View>
+            </RectButton>
         </View>
     )
 }
